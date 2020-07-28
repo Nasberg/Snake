@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snake</title>
+
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/3ab7d1c18b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Own stylesheet and script -->
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script src="/assets/script.js"></script>
+  </head>
+  <body>
+    <h3 id="score">Score: 0</h3>
+    <div id="board">
+      <div id="snake"></div>
+      <div id="food"></div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="startModal"
+      data-backdrop="static"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="startModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <h1>WELCOME TO SNAKE</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-6">
+                  <button type="button" class="btn btn-secondary">
+                    Highscores
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary">
+                    Start Game
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="nameModal"
+      data-backdrop="static"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="nameModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <h2>INSERT YOUR NAME</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="nameInput"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="pauseModal"
+      data-backdrop="static"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="pauseModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <h1>GAME PAUSED</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-6">
+                  <button type="button" class="btn btn-danger">
+                    Quit Game
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary">
+                    Resume Game
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="endModal"
+      data-backdrop="static"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="endModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <h1>GAME LOST</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-6">
+                  <button type="button" class="btn btn-danger">
+                    Quit Game
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary">
+                    Start New Game
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="highscoreModal"
+      data-backdrop="static"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="highscoreModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <h1>HIGHSCORES</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row my-2">
+                <div class="col-2">
+                  <h3>1:</h3>
+                </div>
+                <div class="col-8">
+                  <h3 id="pos1"></h3>
+                </div>
+                <div class="col-2">
+                  <h3 id="score1"></h3>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-2">
+                  <h3>2:</h3>
+                </div>
+                <div class="col-8">
+                  <h3 id="pos2"></h3>
+                </div>
+                <div class="col-2">
+                  <h3 id="score2"></h3>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-2">
+                  <h3>3:</h3>
+                </div>
+                <div class="col-8">
+                  <h3 id="pos3"></h3>
+                </div>
+                <div class="col-2">
+                  <h3 id="score3"></h3>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-2">
+                  <h3>4:</h3>
+                </div>
+                <div class="col-8">
+                  <h3 id="pos4"></h3>
+                </div>
+                <div class="col-2">
+                  <h3 id="score4"></h3>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-2">
+                  <h3>5:</h3>
+                </div>
+                <div class="col-8">
+                  <h3 id="pos5"></h3>
+                </div>
+                <div class="col-2">
+                  <h3 id="score5"></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="col-12">
+                  <button type="button" class="btn btn-secondary">
+                    Return To Menu
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

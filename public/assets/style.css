@@ -1,0 +1,53 @@
+* {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f31794;
+}
+
+#score {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+#board {
+  margin: auto;
+  box-sizing: content-box;
+  margin-top: 75px;
+  width: 500px;
+  height: 500px;
+  border: 10px solid black;
+  background: rgb(240, 240, 240);
+}
+
+#snake {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: lime;
+  margin-left: 240px;
+  margin-top: 240px;
+}
+
+.snakeTail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: lime;
+}
+
+#food {
+  visibility: hidden;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+
+.modal .btn {
+  width: 100%;
+}
