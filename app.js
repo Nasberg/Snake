@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // connect to mongodb
-mongoose.connect("mongodb+srv://maxedevents:maxedevents@eriksfirstcluster-0kjfp.gcp.mongodb.net/snake_db?retryWrites=true&w=majority");
+mongoose.connect('mongodb+srv://USERNAME:PASSWORD@CLUSTER/DATABASE?retryWrites=true&w=majority');
 let db = mongoose.connection;
 
 // check connection
